@@ -1,14 +1,12 @@
 "use client";
 import { Task } from "@/app/_utils/types";
-import { FeedbackContext } from "@/context/Feedback";
+import { FeedbackContext, useFeedbackContext } from "@/context/Feedback";
 import { addTask } from "@/lib/tasks/tasksSlice";
 import { useContext, useState } from "react";
 import { useDispatch } from "react-redux";
 import { v4 as uuid } from "uuid";
 
 export default function CreateTask() {
-  const { feedback, setFeedback } = useContext(FeedbackContext);
-  const dispatch = useDispatch();
   const [input, setInput] = useState<Task>({
     id: uuid(),
     title: "",
@@ -19,6 +17,12 @@ export default function CreateTask() {
     done: false,
     tags: [],
   });
+  const dispatch = useDispatch();
+  const context = useFeedbackContext();
+  if (!context) {
+    throw new Error("FeedbackContext must be used within a FeedbackProvider");
+  }
+  const { feedback, setFeedback } = context;
 
   const { id, title, description, createdAt, dueDate, urgency, done, tags } =
     input;
@@ -80,6 +84,7 @@ export default function CreateTask() {
         </div>
         <textarea
           required
+          className="resize-none"
           id="description"
           placeholder="Description"
           rows={5}

@@ -11,8 +11,6 @@ import { overlay } from "@/app/_utils/animations";
 
 export default function Tasks() {
   const tasks = useSelector((state: RootState) => state.tasks.tasksSlice);
-  console.log(tasks);
-
   const [open, setOpen] = useState(false);
   const [task, setTask] = useState<string | null>(null);
 
@@ -75,7 +73,7 @@ export default function Tasks() {
       </Card>
 
       {open && (
-        <AnimatePresence mode="wait">
+        <AnimatePresence>
           <Task id={task} key={task} setOpen={setOpen} />
           <motion.div
             variants={overlay}

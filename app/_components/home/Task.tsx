@@ -33,7 +33,7 @@ export default function Task({ id, setOpen }: IdTypeTask) {
           type="text"
           name="title"
           id="title"
-          className="w-auto p-0 rounded-none h2"
+          className="p-0 rounded-none h2"
           style={{ backgroundColor: "transparent" }}
           value={actualTask?.title}
           onChange={(e) =>
@@ -93,7 +93,7 @@ export default function Task({ id, setOpen }: IdTypeTask) {
               }
             />
           </div>
-          <div className="w-full flex justify-between items-baseline">
+          <div className="flex justify-between items-baseline">
             <p>Is Urgent</p>
             <input
               id="done"
@@ -103,7 +103,7 @@ export default function Task({ id, setOpen }: IdTypeTask) {
               onChange={() => dispatch(toggleTaskUrgency(actualTask?.id))}
             />
           </div>
-          <div className="w-full flex justify-between items-baseline">
+          <div className="flex justify-between items-baseline">
             <p>Done</p>
             <input
               id="done"

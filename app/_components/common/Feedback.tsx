@@ -1,16 +1,21 @@
 "use client";
-import { FeedbackContext } from "@/context/Feedback";
-import { useContext } from "react";
+import { useFeedbackContext } from "@/context/Feedback";
 
 export default function Feedback() {
-  const { feedback, setFeedback } = useContext(FeedbackContext);
+  const context = useFeedbackContext();
+
+  if (!context) {
+    throw new Error("FeedbackContext must be used within a FeedbackProvider");
+  }
+
+  const { feedback, setFeedback } = context;
 
   if (!feedback) {
     return null;
   }
 
   return (
-    <section className="fixed top-[15lvh] left-0 right-0 flex justify-center">
+    <section className="absolute top-0 left-0 right-0 flex justify-center">
       <p>{feedback}</p>
     </section>
   );

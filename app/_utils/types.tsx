@@ -68,7 +68,7 @@ export type IdTypeTask = {
   setOpen: (open: boolean) => void;
 };
 
-export interface FeedbackContextType {
+export type FeedbackContextType = {
   feedback: string | null;
   setFeedback: (feedback: string | null) => void;
-}
+};

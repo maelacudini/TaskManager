@@ -21,7 +21,7 @@ export default function Header() {
 
   return (
     <header className="py-[5lvh] px-5 flex justify-between items-center">
-      <p className="h4">TasksManager</p>
+      <p className="h4">Tasks Manager</p>
       <button className="btn" style={{ padding: "1rem" }} onClick={toggleTheme}>
         <Image
           alt="toggle switch"

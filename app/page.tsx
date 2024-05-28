@@ -9,10 +9,10 @@ export default function Home() {
     <main className="relative py-[5lvh] px-5 flex flex-wrap gap-8">
       <Feedback />
       <Card>
-        <Weather />
+        <CreateTask />
       </Card>
       <Card>
-        <CreateTask />
+        <Weather />
       </Card>
       <Tasks />
     </main>

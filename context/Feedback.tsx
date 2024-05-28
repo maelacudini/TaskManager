@@ -1,6 +1,6 @@
 "use client";
 import { ChildrenType, FeedbackContextType } from "@/app/_utils/types";
-import { ReactNode, createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 export const FeedbackContext = createContext<FeedbackContextType | null>(null);
 
@@ -21,4 +21,8 @@ export function FeedbackProvider({ children }: ChildrenType) {
       {children}
     </FeedbackContext.Provider>
   );
+}
+
+export function useFeedbackContext() {
+  return useContext(FeedbackContext);
 }
