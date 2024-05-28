@@ -3,9 +3,9 @@ import { MetadataRoute } from "next";
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: "https://acme.com",
+      url: "https://task-manager-silk-seven.vercel.app/",
       lastModified: new Date(),
-      changeFrequency: "yearly",
+      changeFrequency: "daily",
       priority: 1,
     },
   ];
