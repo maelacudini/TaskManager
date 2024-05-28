@@ -10,10 +10,8 @@ import {
   toggleTaskUrgency,
   updateTaskDescription,
   updateTaskDueDate,
-  updateTaskTags,
   updateTaskTitle,
 } from "@/lib/tasks/tasksSlice";
-import { useState } from "react";
 
 export default function Task({ id, setOpen }: IdTypeTask) {
   const dispatch = useDispatch();

@@ -19,7 +19,7 @@ export default function Weather() {
   //get daily weather details
   let daily = weather?.daily;
 
-  //deal with navigator.geolocation.getCurrentPosition
+  //deal with navigator.geolocation.getCurrentPosition, check out readme
   const options = {
     enableHighAccuracy: true,
     timeout: 5000,

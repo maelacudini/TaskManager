@@ -1,8 +1,4 @@
-import { ReactNode } from "react";
-
-type ChildrenType = {
-  children: ReactNode;
-};
+import { ChildrenType } from "@/app/_utils/types";
 
 export default function Card({ children }: ChildrenType) {
   return <section className="card">{children}</section>;

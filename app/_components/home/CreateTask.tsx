@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { v4 as uuid } from "uuid";
 
 export default function CreateTask() {
+  //set up input fields
   const [input, setInput] = useState<Task>({
     id: uuid(),
     title: "",
@@ -17,6 +18,11 @@ export default function CreateTask() {
     done: false,
     tags: [],
   });
+
+  const { id, title, description, createdAt, dueDate, urgency, done, tags } =
+    input;
+
+  //get dispatch to use task methods and context to set feesback
   const dispatch = useDispatch();
   const context = useFeedbackContext();
   if (!context) {
@@ -24,9 +30,7 @@ export default function CreateTask() {
   }
   const { feedback, setFeedback } = context;
 
-  const { id, title, description, createdAt, dueDate, urgency, done, tags } =
-    input;
-
+  //handle submit
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (
@@ -38,7 +42,6 @@ export default function CreateTask() {
       return;
     }
 
-    //trim tasks, delete empty tasks
     const trimmedTags = tags
       .map((tag) => tag.trim())
       .filter((tag) => tag.length > 0);
