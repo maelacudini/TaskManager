@@ -4,7 +4,25 @@
 
 /*hide scrollbar*/
 ::-webkit-scrollbar {
-  display: none;
+  width: 0.25rem;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 1rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #c0c0c0;
+  border-radius: 1rem;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  background-color: #0a0a0a;
 }
 
 /*general*/
@@ -19,39 +37,39 @@ body {
   margin: 0;
   padding: 0;
   background-color: white;
-  color: #171821;
+  color: #0a0a0a;
 }
 
 [data-theme="dark"] body {
-  background-color: #171821;
+  background-color: #0a0a0a;
   color: white;
 }
 
 h1,
 .h1 {
   font-size: clamp(3.125rem, 0.1431rem + 9.542vw, 6.25rem);
-  font-weight: 400;
+  font-weight: 700;
   line-height: 1;
 }
 
 h2,
 .h2 {
   font-size: clamp(2.5rem, 1.9036rem + 1.9084vw, 3.125rem);
-  font-weight: 400;
+  font-weight: 700;
   line-height: 1;
 }
 
 h3,
 .h3 {
   font-size: clamp(1.875rem, 1.2786rem + 1.9084vw, 2.5rem);
-  font-weight: 400;
+  font-weight: 700;
   line-height: 1;
 }
 
 h4,
 .h4 {
   font-size: clamp(1.25rem, 0.6536rem + 1.9084vw, 1.875rem);
-  font-weight: 400;
+  font-weight: 700;
   line-height: 1;
 }
 
@@ -59,7 +77,7 @@ p,
 a,
 button {
   font-size: clamp(1rem, 0.8807rem + 0.3817vw, 1.125rem);
-  font-weight: 300;
+  font-weight: 400;
   text-decoration: none;
   font-family: inherit;
   color: inherit;
@@ -68,17 +86,14 @@ button {
 input,
 textarea {
   outline: none;
-  background-color: #17182105;
+  background-color: #0a0a0a05;
   padding: 1rem 2rem;
   border-radius: 1rem;
   width: 100%;
-}
-
-input::placeholder,
-textarea::placeholder {
-  font-weight: 300;
+  font-weight: 400;
   font-family: inherit;
   font-size: clamp(1rem, 0.8807rem + 0.3817vw, 1.125rem);
+  color: rgb(156 163 175);
 }
 
 [data-theme="dark"] input {
@@ -91,7 +106,7 @@ textarea::placeholder {
 
 .btn {
   position: relative;
-  border: 1px solid #17182125;
+  border: 1px solid #0a0a0a25;
   background-color: transparent;
   padding: 1rem 2rem;
   border-radius: 2rem;
@@ -110,7 +125,7 @@ textarea::placeholder {
 
 .btn::after {
   content: "→";
-  background-color: #171821;
+  background-color: #0a0a0a;
   color: #fff;
   width: 100%;
   height: 100%;
@@ -128,7 +143,7 @@ textarea::placeholder {
 }
 
 [data-theme="dark"] .btn::after {
-  color: #171821;
+  color: #0a0a0a;
   background-color: #fff;
 }
 
@@ -143,12 +158,11 @@ textarea::placeholder {
   flex-grow: 1;
   flex-basis: 30rem;
   background-color: #ffffff;
-  box-shadow: 0 0 2rem #21222d25;
+  box-shadow: 0 0 2rem #0a0a0a25;
   position: relative;
-  z-index: 20;
+  z-index: 1;
 }
 
 [data-theme="dark"] .card {
-  background: linear-gradient(225deg, #3b2a35, #21222d 50%);
-  box-shadow: 0 0 2rem #ffffff05;
+  background: linear-gradient(225deg, #242424, #151515 50%);
 }

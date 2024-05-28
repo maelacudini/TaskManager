@@ -58,7 +58,7 @@ export default function Weather() {
 
   return (
     <div className="flex flex-col gap-8">
-      <div className="flex items-baseline justify-between flex-wrap gap-2">
+      <div className="flex items-baseline justify-between flex-wrap gap-4">
         <p className="h2">{!permission ? "Rome" : "Your Position"}</p>
         <p className="h4 text-gray-400">
           Max {daily?.temperature_2m_max?.toString().slice(0, 4)}° / Min{" "}

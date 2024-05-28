@@ -7,14 +7,14 @@ import Weather from "./_components/home/Weather";
 export default function Home() {
   return (
     <main className="relative py-[5lvh] px-5 flex flex-wrap gap-8">
-      {/* <Card>
+      <Feedback />
+      <Card>
         <Weather />
-      </Card> */}
-      <Tasks />
+      </Card>
       <Card>
         <CreateTask />
       </Card>
-      <Feedback />
+      <Tasks />
     </main>
   );
 }

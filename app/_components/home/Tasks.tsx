@@ -11,6 +11,8 @@ import { overlay } from "@/app/_utils/animations";
 
 export default function Tasks() {
   const tasks = useSelector((state: RootState) => state.tasks.tasksSlice);
+  console.log(tasks);
+
   const [open, setOpen] = useState(false);
   const [task, setTask] = useState<string | null>(null);
 
@@ -30,7 +32,7 @@ export default function Tasks() {
             <p>urgent</p>
           </div>
           {tasks.length > 0 ? (
-            <div className="flex flex-col gap-4 overflow-scroll max-h-80">
+            <div className="flex flex-col gap-4 overflow-y-scroll max-h-80">
               {[...tasks].reverse().map((task, i) => (
                 <div
                   onClick={() => {
@@ -81,7 +83,7 @@ export default function Tasks() {
             animate="animate"
             exit="exit"
             key="overlay"
-            className="fixed top-0 left-0 right-0 bottom-0 z-[25] backdrop-blur-sm bg-[#21222d90]"
+            className="fixed top-0 left-0 right-0 bottom-0 z-[25] backdrop-blur-sm bg-[#0a0a0a90]"
           />
         </AnimatePresence>
       )}

@@ -13,7 +13,7 @@ export default function CreateTask() {
     id: uuid(),
     title: "",
     description: "",
-    createdAt: new Date().toDateString(),
+    createdAt: new Date().toDateString().toString(),
     dueDate: "",
     urgency: true,
     done: false,
@@ -33,7 +33,17 @@ export default function CreateTask() {
       setFeedback("Please fill in all the input fields");
       return;
     }
-    dispatch(addTask(input));
+
+    //trim tasks, delete empty tasks
+    const trimmedTags = tags
+      .map((tag) => tag.trim())
+      .filter((tag) => tag.length > 0);
+    const actualInput: Task = {
+      ...input,
+      tags: trimmedTags,
+    };
+
+    dispatch(addTask(actualInput));
     setInput({
       id: "",
       title: "",
@@ -57,14 +67,14 @@ export default function CreateTask() {
             id="title"
             type="text"
             placeholder="Title"
-            value={input.title}
+            value={title}
             onChange={(e) => setInput({ ...input, title: e.target.value })}
           />
           <input
             required
             id="dueDate"
             type="date"
-            value={input.dueDate}
+            value={dueDate}
             onChange={(e) => setInput({ ...input, dueDate: e.target.value })}
           />
         </div>
@@ -73,7 +83,7 @@ export default function CreateTask() {
           id="description"
           placeholder="Description"
           rows={5}
-          value={input.description}
+          value={description}
           onChange={(e) => setInput({ ...input, description: e.target.value })}
         />
         <input
@@ -81,11 +91,11 @@ export default function CreateTask() {
           id="tags"
           type="text"
           placeholder="Add tags separated by comma"
-          value={tags.join(", ")}
+          value={tags}
           onChange={(e) =>
             setInput({
               ...input,
-              tags: e.target.value.split(",").map((tag) => tag.trim()),
+              tags: e.target.value.split(","),
             })
           }
         />
@@ -94,7 +104,7 @@ export default function CreateTask() {
             <input
               id="urgency"
               type="checkbox"
-              checked={input.urgency}
+              checked={urgency}
               onChange={(e) =>
                 setInput({ ...input, urgency: e.target.checked })
               }

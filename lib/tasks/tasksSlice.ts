@@ -11,7 +11,6 @@ const tasksSlice = createSlice({
   reducers: {
     addTask: (state, action) => {
       //state is referring to initialState, whatever is in there you have access to
-
       state.tasksSlice.push(action.payload);
     },
     deleteTask: (state, action) => {
