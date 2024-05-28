@@ -1,4 +1,5 @@
 import Card from "./_components/common/Card";
+import Feedback from "./_components/common/Feedback";
 import CreateTask from "./_components/home/CreateTask";
 import Tasks from "./_components/home/Tasks";
 import Weather from "./_components/home/Weather";
@@ -13,6 +14,7 @@ export default function Home() {
       <Card>
         <CreateTask />
       </Card>
+      <Feedback />
     </main>
   );
 }

@@ -1,13 +1,14 @@
 "use client";
 import { Task } from "@/app/_utils/types";
+import { FeedbackContext } from "@/context/Feedback";
 import { addTask } from "@/lib/tasks/tasksSlice";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useDispatch } from "react-redux";
 import { v4 as uuid } from "uuid";
 
 export default function CreateTask() {
+  const { feedback, setFeedback } = useContext(FeedbackContext);
   const dispatch = useDispatch();
-  const [feedback, setFeedback] = useState<string | null>(null);
   const [input, setInput] = useState<Task>({
     id: uuid(),
     title: "",
@@ -29,10 +30,7 @@ export default function CreateTask() {
       !dueDate ||
       description.trim().length === 0
     ) {
-      setFeedback("Please fill in all fields");
-      setTimeout(() => {
-        setFeedback(null);
-      }, 3000);
+      setFeedback("Please fill in all the input fields");
       return;
     }
     dispatch(addTask(input));
@@ -47,15 +45,11 @@ export default function CreateTask() {
       tags: [],
     });
     setFeedback("Task added");
-    setTimeout(() => {
-      setFeedback(null);
-    }, 3000);
   }
 
   return (
     <div className="flex flex-col justify-between gap-8">
       <p className="h2">Create Your Task</p>
-      {feedback && <p>{feedback}</p>}
       <form onSubmit={handleSubmit} className="flex flex-wrap gap-2">
         <div className="flex gap-2 w-full flex-col sm:flex-row">
           <input

@@ -6,6 +6,8 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import Task from "./Task";
 import Card from "../common/Card";
+import { motion } from "framer-motion";
+import { overlay } from "@/app/_utils/animations";
 
 export default function Tasks() {
   const tasks = useSelector((state: RootState) => state.tasks.tasksSlice);
@@ -37,7 +39,7 @@ export default function Tasks() {
                   className="flex flex-col gap-2 pl-2"
                   style={{
                     borderLeft: `0.25rem solid ${
-                      task?.done ? "#499849" : "#cf2222"
+                      task?.done ? "#499849" : "#f55555"
                     }`,
                     opacity: task?.done ? "0.5" : "1",
                   }}
@@ -72,13 +74,12 @@ export default function Tasks() {
 
       {open && (
         <AnimatePresence mode="wait">
-          <Task id={task} key="task" setOpen={setOpen} />
-        </AnimatePresence>
-      )}
-
-      {open && (
-        <AnimatePresence mode="wait">
-          <div
+          <Task id={task} key={task} setOpen={setOpen} />
+          <motion.div
+            variants={overlay}
+            initial="initial"
+            animate="animate"
+            exit="exit"
             key="overlay"
             className="fixed top-0 left-0 right-0 bottom-0 z-[25] backdrop-blur-sm bg-[#21222d90]"
           />

@@ -1,3 +1,9 @@
+import { ReactNode } from "react";
+
+export type ChildrenType = {
+  children: ReactNode;
+};
+
 export interface Task {
   id: string;
   title: string;
@@ -61,3 +67,8 @@ export type IdTypeTask = {
   id: string | null;
   setOpen: (open: boolean) => void;
 };
+
+export interface FeedbackContextType {
+  feedback: string | null;
+  setFeedback: (feedback: string | null) => void;
+}

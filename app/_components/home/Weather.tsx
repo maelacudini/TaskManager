@@ -10,13 +10,16 @@ import WeatherPermission from "./WeatherPermission";
 
 export default function Weather() {
   const [weather, setWeather] = useState<WeatherType>();
-  let daily = weather?.daily;
   const [permission, setPermission] = useState<boolean | undefined>(undefined);
   const [position, setPosition] = useState<CoordsType>({
     latitude: 41.8919,
     longitude: 12.5113,
   });
 
+  //get daily weather details
+  let daily = weather?.daily;
+
+  //deal with navigator.geolocation.getCurrentPosition
   const options = {
     enableHighAccuracy: true,
     timeout: 5000,
@@ -35,12 +38,14 @@ export default function Weather() {
     console.log(`ERROR(${err.code}): ${err.message}`);
   }
 
+  //check for permission, if you include this in the next use effects it generates a loop
   useEffect(() => {
     if (permission) {
       navigator.geolocation.getCurrentPosition(success, error, options);
     }
   }, [permission]);
 
+  //fetch weather
   useEffect(() => {
     fetch(
       `https://api.open-meteo.com/v1/forecast?latitude=${position.latitude}&longitude=${position.longitude}&daily=temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,sunrise,sunset,daylight_duration,uv_index_max,precipitation_sum,rain_sum,precipitation_probability_max,wind_speed_10m_max,wind_gusts_10m_max,wind_direction_10m_dominant&timezone=Europe%2FLondon&past_days=1&forecast_days=3`

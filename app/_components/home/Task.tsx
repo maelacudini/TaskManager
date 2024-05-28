@@ -2,6 +2,8 @@
 import { IdTypeTask } from "@/app/_utils/types";
 import { RootState } from "@/lib/store";
 import { useSelector } from "react-redux";
+import { motion } from "framer-motion";
+import { taskAnimation } from "@/app/_utils/animations";
 
 export default function Task({ id, setOpen }: IdTypeTask) {
   const tasks = useSelector((state: RootState) => state.tasks.tasksSlice);
@@ -9,17 +11,23 @@ export default function Task({ id, setOpen }: IdTypeTask) {
   console.log(actualTask);
 
   return (
-    <div className="fixed top-0 left-0 right-0 bottom-0 z-[30] flex justify-center items-center py-[5lvh] px-5">
+    <motion.div
+      variants={taskAnimation}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      className="fixed top-0 left-0 right-0 bottom-0 z-[30] flex justify-center items-center py-[5lvh] px-5"
+    >
       <div className="card max-w-3xl flex flex-col gap-8">
         <div className="flex justify-between items-center">
           <p className="h2">{actualTask?.title}</p>
           <button className="btn" onClick={() => setOpen(false)}>
-            close
+            Close
           </button>
         </div>
-        <div>
+        <div className="flex justify-between items-baseline">
           <p>Title</p>
-          <p>{actualTask?.title}</p>
+          <p className="text-gray-400">{actualTask?.title}</p>
         </div>
         <div>
           <p>Created</p>
@@ -38,6 +46,6 @@ export default function Task({ id, setOpen }: IdTypeTask) {
           <p>{actualTask?.description}</p>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

@@ -18,6 +18,7 @@ export default function WeatherPermission({
           src={permission ? "/icons/no.svg" : "/icons/yes.svg"}
           height={15}
           width={15}
+          loading="lazy"
         />
       </button>
     </div>
