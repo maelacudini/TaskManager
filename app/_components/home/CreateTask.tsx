@@ -67,7 +67,7 @@ export default function CreateTask() {
   return (
     <div className="flex flex-col justify-between gap-8">
       <p className="h2">Create Your Task</p>
-      <form onSubmit={handleSubmit} className="flex flex-wrap gap-2">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-2">
         <div className="flex gap-2 w-full flex-col sm:flex-row">
           <input
             required
@@ -108,17 +108,18 @@ export default function CreateTask() {
           }
         />
         <div className="flex gap-2 w-full justify-between items-center">
-          <label htmlFor="urgency" className="flex gap-2">
+          <div className="flex items-baseline gap-2">
             <input
               id="urgency"
               type="checkbox"
+              className="w-auto"
               checked={urgency}
               onChange={(e) =>
                 setInput({ ...input, urgency: e.target.checked })
               }
             />
-            Urgent
-          </label>
+            <p>Urgent</p>
+          </div>
           <button type="submit" className="btn">
             Add Task
           </button>
